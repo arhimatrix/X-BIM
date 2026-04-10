@@ -1,0 +1,5 @@
+# X-BIM — Extraterrestrial Building Information Modeling
+# Requirements file — pin minor versions for reproducibility
+
+streamlit>=1.35.0
+requests>=2.31.0
