@@ -203,19 +203,31 @@ st.markdown(
     header[data-testid="stHeader"] svg rect,
     header[data-testid="stHeader"] svg circle,
     header[data-testid="stHeader"] svg polygon { fill: #1C1C1C !important; color: #1C1C1C !important; }
-    /* Manage app / deploy button — force white background so icon shows black not white-on-black */
+    /* Toolbar action buttons — light background, black icons */
     [data-testid="stAppDeployButton"] button,
-    header[data-testid="stHeader"] button,
+    header[data-testid="stHeader"] button:not([data-testid="stStatusWidget"] *),
     header[data-testid="stHeader"] [data-testid="stToolbarActionButton"] {
         background: #F5F2ED !important; color: #1C1C1C !important;
         border: 1px solid #CCCAC5 !important; border-radius: 0 !important;
         font-size: 0.72rem !important; letter-spacing: 0.1em !important;
         box-shadow: none !important;
     }
+    /* Status / running spinner — keep transparent so animation shows correctly */
+    [data-testid="stStatusWidget"],
+    [data-testid="stStatusWidget"] button,
+    [data-testid="stStatusWidget"] * {
+        background: transparent !important;
+        border: none !important; box-shadow: none !important;
+    }
+    [data-testid="stStatusWidget"] svg,
+    [data-testid="stStatusWidget"] svg path,
+    [data-testid="stStatusWidget"] svg circle {
+        fill: #1C1C1C !important; stroke: #1C1C1C !important;
+    }
     [data-testid="stMainMenuButton"] {
         background: transparent !important; border: none !important; box-shadow: none !important;
     }
-    [data-testid="stMainMenuButton"] svg, [data-testid="stMainMenuButton"] * {
+    [data-testid="stMainMenuButton"] svg, [data-testid="stMainMenuButton\"] * {
         fill: #1C1C1C !important; color: #1C1C1C !important; background: transparent !important;
     }
     [data-testid="stMainMenuButton"]:hover,
@@ -496,24 +508,13 @@ with st.sidebar:
     )
     isru_materials = [m.strip() for m in isru_raw.split(",") if m.strip()]
 
-    st.markdown("---")
-    st.markdown("### Gemini API Key")
 
-    # Priority: secrets.toml → env var → empty (user types it in)
-    _secret_key = st.secrets.get("GEMINI_API_KEY", "") if hasattr(st, "secrets") else ""
-    _env_key    = os.environ.get("GEMINI_API_KEY", "")
-    _default_key = _secret_key or _env_key
+    # ── API key: load silently from secrets / env (not shown in UI) ──────────
+    _secret_key  = st.secrets.get("GEMINI_API_KEY", "") if hasattr(st, "secrets") else ""
+    _env_key     = os.environ.get("GEMINI_API_KEY", "")
+    api_key      = _secret_key or _env_key
 
-    api_key = st.text_input(
-        "API Key",
-        type="password",
-        value=_default_key,
-        help="Key is auto-loaded from .streamlit/secrets.toml or GEMINI_API_KEY env var.",
-    )
-    if _default_key:
-        st.success("API key loaded from secrets / env var.")
 
-    st.markdown("---")
     st.markdown("### Habitat Geometry")
     hab_length = st.number_input("Length (m)", min_value=2.0, max_value=200.0, value=20.0, step=1.0)
     hab_width  = st.number_input("Width  (m)", min_value=2.0, max_value=200.0, value=10.0, step=1.0)
