@@ -197,19 +197,28 @@ st.markdown(
         background-color: #F5F2ED !important;
         border-bottom: 1px solid #D8D3CC !important;
     }
-    header[data-testid="stHeader"] svg { fill: #1C1C1C !important; color: #1C1C1C !important; }
+    /* Force ALL header SVGs and toolbar icons to black */
+    header[data-testid="stHeader"] svg,
+    header[data-testid="stHeader"] svg path,
+    header[data-testid="stHeader"] svg rect,
+    header[data-testid="stHeader"] svg circle,
+    header[data-testid="stHeader"] svg polygon { fill: #1C1C1C !important; color: #1C1C1C !important; }
+    /* Manage app / deploy button — force white background so icon shows black not white-on-black */
+    [data-testid="stAppDeployButton"] button,
+    header[data-testid="stHeader"] button,
+    header[data-testid="stHeader"] [data-testid="stToolbarActionButton"] {
+        background: #F5F2ED !important; color: #1C1C1C !important;
+        border: 1px solid #CCCAC5 !important; border-radius: 0 !important;
+        font-size: 0.72rem !important; letter-spacing: 0.1em !important;
+        box-shadow: none !important;
+    }
     [data-testid="stMainMenuButton"] {
         background: transparent !important; border: none !important; box-shadow: none !important;
     }
     [data-testid="stMainMenuButton"] svg, [data-testid="stMainMenuButton"] * {
         fill: #1C1C1C !important; color: #1C1C1C !important; background: transparent !important;
     }
-    [data-testid="stMainMenuButton"]:hover { background: #EAE6DF !important; }
-    [data-testid="stAppDeployButton"] button, header[data-testid="stHeader"] button {
-        background: transparent !important; color: #1C1C1C !important;
-        border: 1px solid #CCCAC5 !important; border-radius: 0 !important;
-        font-size: 0.72rem !important; letter-spacing: 0.1em !important;
-    }
+    [data-testid="stMainMenuButton"]:hover,
     header[data-testid="stHeader"] button:hover { background: #EAE6DF !important; }
 
     /* ─── NUMBER INPUT STEPPERS ─── */
@@ -329,6 +338,39 @@ st.markdown(
     }
     .stSelectbox *, .stTextInput *, .stTextArea *,
     .stNumberInput *, .stSlider *, .stAlert * { color: #1C1C1C !important; }
+
+    /* ─── SUCCESS ALERT (Analysis complete) ─── */
+    div[data-testid="stAlert"][kind="success"],
+    div[data-testid="stNotification"],
+    .stSuccess, .element-container .stAlert {
+        background-color: #EAE7E1 !important;
+        border: none !important;
+        border-left: 3px solid #2A2A2A !important;
+        border-radius: 0 !important;
+        color: #1C1C1C !important;
+    }
+    /* Target Streamlit's internal alert element */
+    div[data-baseweb="notification"] {
+        background-color: #EAE7E1 !important;
+        border-left: 3px solid #2A2A2A !important;
+        border-radius: 0 !important;
+    }
+    div[data-baseweb="notification"] * { color: #1C1C1C !important; }
+
+    /* ─── INFO BOXES (Structural / Thermal spec cards) ─── */
+    div[data-testid="stAlert"][kind="info"],
+    .stInfo {
+        background-color: #EDEAE4 !important;
+        border: 1px solid #D8D3CC !important;
+        border-left: 3px solid #888880 !important;
+        border-radius: 0 !important;
+        color: #1C1C1C !important;
+    }
+    div[data-baseweb="notification"][kind="info"] {
+        background-color: #EDEAE4 !important;
+        border-left: 3px solid #888880 !important;
+        border-radius: 0 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -366,9 +408,9 @@ st.markdown(
                         -webkit-font-smoothing:antialiased;">X&#8209;BIM</h1>
             <!-- subtitle: larger, white -->
             <p style="margin:16px 0 0 !important; color:#FFFFFF !important;
-                      font-size:1.05rem !important; letter-spacing:0.10em !important;
+                      font-size:1.20rem !important; letter-spacing:0.09em !important;
                       text-transform:uppercase !important; font-family:'DM Sans',sans-serif !important;
-                      font-weight:400 !important; opacity:0.88;">
+                      font-weight:400 !important; opacity:0.90;">
               Extraterrestrial Building Information Modeling &nbsp;&middot;&nbsp;
               AI-Powered Habitat Design for Deep Space
             </p>
