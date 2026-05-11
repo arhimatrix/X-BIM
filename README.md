@@ -1,33 +1,38 @@
-# 🌍 Terra-BIM (Extreme Biome Information Modeling)
+# 🌍 MANTIS: Procedural Resilience System
 
 **Hackathon:** MSS2026 SpaceApps (Track 1B Capstone)  
 **SDGs Addressed:** SDG 11 (Sustainable Cities and Communities) & SDG 13 (Climate Action)  
-**Live Demo:** [Streamlit Deployment](https://extraterrestrialbim.streamlit.app)  
+**Live Demo:** [https://mantis.streamlit.app/](https://mantis.streamlit.app/)  
 
 ---
 
 ## 📌 Project Vision
-Climate change is creating extreme environments across the globe. From Tornado Alleys in the US to flood-prone regions in Southeast Asia, communities need rapid, data-driven structural designs for resilient housing and disaster-relief shelters. **Terra-BIM** is a generative design dashboard that translates Earth Observation data into actionable architectural specifications.
+Climate change is creating extreme environments across the globe. From Tornado Alleys in the US to flood-prone regions in Southeast Asia, communities need rapid, data-driven structural designs for resilient housing and disaster-relief shelters. **MANTIS** is an intelligent generative design dashboard that translates Earth Observation data into actionable architectural specifications.
 
 ## 🎯 Stakeholders & Human-Centered Design (HCD)
 Our primary users are **Disaster Response Coordinators, NGO Leads, and Urban Planners**. 
-Instead of forcing users to manually calculate wind loads or flood elevations, the user simply inputs the hazard environment and its intensity. Terra-BIM acts as an "Earth-based Resilient Structural Engineer," hiding the complex cloud-based calculations behind a beautiful, intuitive, and tactile "Neumorphic" interface.
+Instead of forcing users to manually calculate wind loads or flood elevations, the user simply inputs the spatial coordinates. MANTIS acts as an "Earth-based Resilient Structural Engineer," hiding complex cloud-based hazard calculations behind a cinematic, intuitive, and tactile dark-mode engineering interface.
 
 ## 🧪 The Solution & Dynamic Data Integration
-Terra-BIM replaces generic construction planning with real-time adaptation:
-1. **Hazard Profiles:** Users select extreme weather risks (Hurricanes, Tornadoes, Floods, Wildfires, Earthquakes) and input Hazard Intensity.
-2. **Local Materials:** The app factors in sustainable, localized resources (Bamboo, Rammed Earth, Recycled Ocean Plastics).
-3. **Generative Analysis:** Powered by the Google Gemini API, the app generates a comprehensive MBSE (Model-Based Systems Engineering) structural specification, including aerodynamic profiles, foundation types, and thermal requirements.
+MANTIS replaces generic construction planning with real-time procedural adaptation:
+1. **Spatial Intelligence:** Users select a geographic target. The system extracts historical natural disaster risks (Hurricanes, Tornadoes, Floods, Seismic activity).
+2. **Local Materials:** The app factors in sustainable, localized in-situ resources (Bamboo, Rammed Earth, Recycled Ocean Plastics).
+3. **Generative Analysis:** Powered by the Google Gemini 1.5 API, the app mathematically maps hazard inputs to structural schemas, generating comprehensive MBSE (Model-Based Systems Engineering) structural specifications.
 
 ## 🎨 UI/UX & Immersive Deployment
-The application features a modern, tactile **Skeuomorphic/Neumorphic design**, creating a physical "instrument" feel that grounds the user experience. 
-Going beyond 2D data, Terra-BIM bridges the gap between analysis and visualization by exporting a **Procedural Python Script** that automatically generates the aerodynamic shelter geometry (e.g., monolithic domes for wind deflection) directly into **Unreal Engine 5** for 1:1 scale Virtual Reality walkthroughs.
+The application features a modern, cinematic entry sequence inspired by high-end industrial design (LoveFrom-style minimalism), transitioning into a robust data dashboard. 
+Going beyond 2D data, MANTIS bridges the gap between analysis and visualization by exporting a **Procedural Python Script** that automatically generates the aerodynamic shelter geometry directly into **Unreal Engine 5** for 1:1 scale Virtual Reality walkthroughs.
 
 ---
 
-## 🛠️ Installation & Usage
+## 🛠️ Installation & Deployment Instructions
 
-1. **Clone the repository**
+### Local Development
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/arhimatrix/X-BIM.git
+   cd X-BIM
+   ```
 2. **Install requirements:**
    ```bash
    pip install -r requirements.txt
@@ -39,7 +44,8 @@ Going beyond 2D data, Terra-BIM bridges the gap between analysis and visualizati
    ```
 4. **Run the App:**
    ```bash
-   streamlit run app.py
+   streamlit run app_earth.py
    ```
-5. **VR Export:**
-   Click "Download UE5 Python Script", open any Unreal Engine 5 project, and navigate to **Tools → Execute Python Script** to spawn the generated resilient shelter geometry.
+
+### Unreal Engine 5 VR Export
+Click the **"Download UE5 Python Script"** button in the MANTIS dashboard. Open any Unreal Engine 5 project, and navigate to **Tools → Execute Python Script** to procedural spawn the generated resilient shelter modules.
