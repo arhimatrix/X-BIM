@@ -454,24 +454,10 @@ with st.sidebar:
     )
     isru_materials = [m.strip() for m in isru_raw.split(",") if m.strip()]
 
-    st.markdown("---")
-    st.markdown("### Gemini API Key")
-
-    # Priority: secrets.toml → env var → empty (user types it in)
-    _secret_key = st.secrets.get("GEMINI_API_KEY", "") if hasattr(st, "secrets") else ""
-    _env_key    = os.environ.get("GEMINI_API_KEY", "")
-    _default_key = _secret_key or _env_key
-
-    api_key = st.text_input(
-        "API Key",
-        type="password",
-        value=_default_key,
-        help="Key is auto-loaded from .streamlit/secrets.toml or GEMINI_API_KEY env var.",
-    )
-    if _default_key:
-        st.success("API key loaded from secrets / env var.")
-
-    st.markdown("---")
+    # ── API key: load silently from secrets / env (not shown in UI) ──────────
+    _secret_key  = st.secrets.get("GEMINI_API_KEY", "") if hasattr(st, "secrets") else ""
+    _env_key     = os.environ.get("GEMINI_API_KEY", "")
+    api_key      = _secret_key or _env_key
     st.markdown("### Habitat Geometry")
     hab_length = st.number_input("Length (m)", min_value=2.0, max_value=200.0, value=20.0, step=1.0)
     hab_width  = st.number_input("Width  (m)", min_value=2.0, max_value=200.0, value=10.0, step=1.0)
