@@ -535,6 +535,14 @@ if not st.session_state["entered_app"]:
     st.markdown('</div>', unsafe_allow_html=True)
     st.stop()
 
+# Force show sidebar and header when inside the main app
+st.markdown("""
+    <style>
+    section[data-testid="stSidebar"] { display: block !important; }
+    header[data-testid="stHeader"] { display: flex !important; }
+    </style>
+""", unsafe_allow_html=True)
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Step 1: Map Navigation
 # ──────────────────────────────────────────────────────────────────────────────
