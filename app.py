@@ -536,11 +536,11 @@ def call_gemini(api_key: str, prompt: str) -> dict:
     """
     Calls the Gemini REST API directly via requests — no SDK, no routing surprises.
     Uses the v1beta endpoint which is what Google AI Studio keys are issued for.
-    Model: gemini-1.5-flash  (free tier: 1,500 req/day, 15 RPM)
+    Model: gemini-2.5-flash
     """
     url = (
         "https://generativelanguage.googleapis.com"
-        "/v1beta/models/gemini-1.5-flash:generateContent"
+        "/v1beta/models/gemini-2.5-flash:generateContent"
         f"?key={api_key}"
     )
     payload = {
